@@ -1,0 +1,12 @@
+<div class="button">
+    <button class="btn btn-primary" (click)="addCounter()">ADD</button>
+    <button class="btn btn-primary" (click)="resetCounters()">RESET</button>
+  </div>
+  
+  <div *ngFor="let counter of counters; let i = index" class="counter-line">
+    <span>{{ counter.value }}</span>
+    <button class="btn btn-success" (click)="incrementCounter(i)">Increment</button>
+    <button class="btn btn-warning" (click)="decrementCounter(i)">Decrement</button>
+    <button class="btn btn-danger" (click)="deleteCounter(i)">Delete</button>
+  </div>
+  
