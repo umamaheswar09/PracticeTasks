@@ -1,9 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-rightpanel',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './rightpanel.component.html',
   styleUrl: './rightpanel.component.scss'
 })
