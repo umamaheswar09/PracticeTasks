@@ -3,5 +3,10 @@
   <button class="btn btn-primary" [routerLink]="['/counter']">Counter</button>
   <button class="btn btn-primary" [routerLink]="['/weather']">Weather</button>
 </div>
+<!-- src/app/app.component.html -->
+<div class="container">
+<app-leftpanel (citySelected)="onCitySelected($event)"></app-leftpanel>  
+<app-rightpanel [weatherData]="selectedWeatherData"></app-rightpanel>
+</div>
 
 <router-outlet></router-outlet>

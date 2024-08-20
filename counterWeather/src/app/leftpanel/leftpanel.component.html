@@ -1,0 +1,14 @@
+<!-- src/app/left-panel/left-panel.component.html -->
+<div class="left-panel">
+    <input [(ngModel)]="cityName" placeholder="Type city name" />
+    <button (click)="addCity()">+</button>
+    <ul>
+      <li *ngFor="let city of recentLocations">
+        <span (click)="selectCity(city)">{{ city.cityName }} - {{ city.temp }}°C</span>
+        <button (click)="refreshCity(city)">🔄</button>
+        <button (click)="removeCity(city)">❌</button>
+      </li>
+    </ul>
+    <button (click)="clearLocations()">Clear</button>
+  </div>
+  

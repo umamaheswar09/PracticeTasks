@@ -8,4 +8,27 @@
     padding: 10px 20px;
     font-size: 16px;
   }
-  
+  /* src/app/app.component.css */
+.container {
+  display: flex;
+}
+
+.left-panel {
+  width: 30%;
+  padding: 20px;
+  border-right: 1px solid #ccc;
+}
+
+.right-panel {
+  width: 70%;
+  padding: 20px;
+}
+
+.right-panel .forecast {
+  display: flex;
+  justify-content: space-between;
+}
+
+.right-panel .forecast div {
+  text-align: center;
+}
