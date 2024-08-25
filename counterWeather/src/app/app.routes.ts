@@ -4,8 +4,8 @@ import { ChatComponent } from './chat/chat.component';
 import { WeatherComponent } from './weather/weather.component';
 
 export const routes: Routes = [
-    { path: 'chat', component: ChatComponent },
+  { path: '', redirectTo: '/counter', pathMatch: 'full' },
   { path: 'counter', component: CounterComponent },
+  { path: 'chat', component: ChatComponent },
   { path: 'weather', component: WeatherComponent },
-  { path: '', redirectTo: '/chat', pathMatch: 'full' } // Default route
 ];

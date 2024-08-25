@@ -1,1 +1,91 @@
-<p>weather works!</p>
+
+<div class="weather-content d-flex gap-1 p-2">
+    <div class="col-md-3 left-container p-2">
+      <div class="city-input">
+        <input type="text" [(ngModel)]="cityName" placeholder="Type city name" />
+        <button class="btn btn-primary" (click)="addCity()">+</button>
+      </div>
+      <hr />
+      <div class="recent-locations">
+        <h6>Recent locations</h6>
+        <ul>
+          <div>
+            <li
+              *ngFor="let location of locations"
+              class="dropdown"
+              (click)="onClickCity(location.name)"
+            >
+              <p class="p-2">
+                {{ location.name }} - {{ location.temp }}° {{ location.status }}
+              </p>
+              <div>
+                <button class="btn" (click)="refreshLocation(location, $event)">
+                  ↻
+                </button>
+                <button class="btn" (click)="removeLocation(location, $event)">
+                  ✕
+                </button>
+              </div>
+            </li>
+          </div>
+        </ul>
+      </div>
+      @if(showClearBtn ){
+      <div>
+        <button class="btn btn-secondary float-end" (click)="clearLocations()">
+          Clear
+        </button>
+      </div>
+      }
+    </div>
+    @if(forecast){
+    <hr style="border: 1px solid red; height: 500px" />
+    }
+    <div class="col-md-9 right-conatiner">
+      @if(!forecast){
+      <div class="no-content">
+        <p>Please search your city</p>
+      </div>
+      }
+      <div *ngIf="forecast">
+        <div class="d-flex justify-content-between weather-header">
+          <h4>{{ city }}</h4>
+          <button class="btn" (click)="onClickCity(city)">↻</button>
+        </div>
+        <div class="d-flex gap-2">
+          <div class="weather-select-img">
+            <img
+              [src]="getWeatherIcon(forecast.list[0].weather[0].icon)"
+              alt="Weather icon"
+              style="width: 200px; height: 200px"
+            />
+          </div>
+          <div class="weather-data">
+            <p>{{ forecast.list[0].main.temp }}°C</p>
+            <p>{{ forecast.list[0].weather[0].description }}</p>
+            <p>
+              Wind: {{ forecast.list[0].wind.speed }} m/s
+              {{ forecast.list[0].wind.deg }}°
+            </p>
+            <p>Pressure: {{ forecast.list[0].main.pressure }} hPa</p>
+          </div>
+        </div>
+  
+        <h6>5-Day Forecast</h6>
+        <div class="forecast">
+          <div *ngFor="let item of getDailyForecasts(forecast.list)">
+            <p>{{ item.dt_txt | date : "d,EEE" }}</p>
+            <div class="weather-img">
+              <img
+                [src]="getWeatherIcon(item.weather[0].icon)"
+                alt="Weather icon"
+                style="width: 70px; height: 70px"
+              />
+            </div>
+            <p>{{ item.main.temp }}°C</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
